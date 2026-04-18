@@ -1,14 +1,14 @@
 {
-  "name": "matrix-agents",
-  "description": "Specialized agent profiles for The Matrix — operator, engineering, design, QA, and product roles. Installable as a Copilot CLI plugin so each agent receives the orchestration toolset (including the `task` tool) that project-local agents cannot.",
-  "version": "0.1.0",
+  "name": "forge",
+  "description": "The Forge — a small, opinionated team of Copilot CLI agents. Operator coordinates, architect designs, implementer builds, qa challenges, devops ships, product defines, scribe improves the team. Built on Burke Holland's Anvil discipline, extended with Goal Card stewardship.",
+  "version": "0.2.0",
   "author": {
     "name": "The Matrix contributors",
-    "url": "https://github.com/darinh/the-matrix-agents"
+    "url": "https://github.com/darinh/forge"
   },
-  "homepage": "https://github.com/darinh/the-matrix-agents",
-  "repository": "https://github.com/darinh/the-matrix-agents",
+  "homepage": "https://github.com/darinh/forge",
+  "repository": "https://github.com/darinh/forge",
   "license": "MIT",
-  "keywords": ["the-matrix", "agents", "operator", "orchestration", "copilot-cli"],
+  "keywords": ["forge", "the-matrix", "agents", "operator", "orchestration", "copilot-cli", "anvil"],
   "agents": "agents/"
 }

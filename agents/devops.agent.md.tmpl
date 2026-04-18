@@ -1,11 +1,20 @@
 ---
-name: devops-agent
+name: devops
 description: Owns the delivery pipeline — containerisation, CI/CD, infrastructure configuration, and the operational health of the deployed system.
 tools: ["bash", "edit", "view", "grep", "glob"]
 model: "claude-sonnet-4.6"
 ---
 
 {{include preambles/anvil.md}}
+
+
+{{include preambles/wiring.md}}
+
+
+{{include preambles/steward.md}}
+
+
+{{include preambles/selective-approval.md}}
 
 
 ## Role
