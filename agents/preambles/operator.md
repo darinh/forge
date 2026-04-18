@@ -136,7 +136,7 @@ mutating tool you may invoke, and only with these orchestration
 `matrix-agents:backend-engineer`, `matrix-agents:frontend-services`,
 `matrix-agents:component-agent`, `matrix-agents:devops-agent`,
 `matrix-agents:platform-agent`, `matrix-agents:qa-agent`,
-`matrix-agents:security-agent`, `code-review`,
+`matrix-agents:security-agent`, `matrix-agents:scribe`, `code-review`,
 `matrix-agents:retrospective`, `dev-team:dev-team`, `anvil:anvil`,
 `explore`, `general-purpose`, `rubber-duck`.
 
