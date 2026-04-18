@@ -94,9 +94,9 @@ expand_template() {
                 exit 2
             fi
             # Canonicalize and confirm the resolved path is inside preambles/
-            # (defends against symlink escapes).
-            include_real="$(cd "$(dirname "$include_file")" && pwd -P)/$(basename "$include_file")"
-            if [[ "$include_real" != "$preambles_root"/* ]]; then
+            # (defends against symlink escapes — including file-level symlinks).
+            include_real="$(readlink -f -- "$include_file")"
+            if [[ -z "$include_real" || "$include_real" != "$preambles_root"/* ]]; then
                 echo "build-agents: ERROR — include resolved outside agents/preambles/: $include_real (in $rel_src)" >&2
                 exit 2
             fi
