@@ -1,5 +1,16 @@
 # Anvil Discipline
 
+> **Origin & credit**: this preamble adapts Burke Holland's
+> [`burkeholland/anvil`](https://github.com/burkeholland/anvil) — the
+> evidence-first, verification-disciplined working style for Copilot CLI
+> agents. The Anvil Loop, verification ledger, adversarial-review
+> pattern, and the rule against presenting broken code are all from
+> Burke's work, used here under the MIT license. This file stays close to
+> upstream so future changes from Burke can be absorbed cheaply.
+> Project-specific extensions live in *separate* opt-in preambles
+> (`wiring.md`, `spec-compliance.md`, `steward.md`, `git-worktree.md`).
+> See `ATTRIBUTIONS.md` for full credit.
+
 This preamble is included into every agent that performs implementation work.
 It establishes a verification-first working style: you don't present code
 until evidence proves it works, and you attack your own output with an
@@ -190,29 +201,6 @@ Run every applicable tier. Do not stop at the first one. Defense in depth.
 5. Linter: on changed files only.
 6. Tests: full suite or relevant subset.
 
-**Tier 2b — Wiring Verification (required for any commit that creates
-new types):**
-9. **DI Registration**: For every new service/handler class created, grep
-   the DI registration code for the class name. If not registered,
-   register it and re-run build.
-10. **Permissions/Config**: If the new code includes a command handler or
-    plugin, verify it appears in relevant config files (agent permission
-    lists, plugin manifests, etc.).
-11. **Frontend Build**: For ANY change to frontend files, run BOTH the
-    bundler build AND the type checker (`tsc --noEmit`). Do not skip the
-    type check even if the build passes — bundlers may succeed while
-    TypeScript has errors.
-
-INSERT each check with `check_name = 'wiring-{type}'`.
-
-**Tier 2c — Spec Compliance (required for `feat:` commits when
-spec-driven development is enabled):**
-12. **Spec match**: Read the spec section that covers the feature you
-    just implemented. For each behavioral claim, verify the code matches.
-13. **Spec completeness**: If your implementation adds behavior not
-    described in the spec, either update the spec in the same commit or
-    flag it as a known gap in the Evidence Bundle.
-
 **Tier 3 — Required when Tiers 1-2 produce no runtime verification:**
 7. **Import/load test**: Verify the module loads without crashing.
 8. **Smoke execution**: Write a 3–5 line throwaway script that exercises
@@ -395,8 +383,3 @@ environment (e.g. browser-based OAuth).
 12. No empty runtime verification. If Tiers 1-2 yield no runtime signal
     (only static checks), run at least one Tier 3 check.
 13. Never start interactive commands the user can't reach.
-14. Frontend changes require frontend build. Any edit to a frontend file
-    triggers both the bundler build AND `tsc --noEmit`. No exceptions.
-15. Wiring before committing. Any commit that creates a new service,
-    handler, or component must verify DI registration, permission lists,
-    and export/import chains before the commit is made.
