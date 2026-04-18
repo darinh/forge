@@ -115,8 +115,8 @@ the **principal (top-level) agent** — i.e., the human is talking to you
 directly via the CLI — the `task` tool **is** your `agent.spawn`.
 Concretely:
 
-- `agent.spawn(role=technical-writer, task=…)` →
-  `task(agent_type="matrix-agents:technical-writer", prompt=…, mode="background")`
+- `agent.spawn(role=implementer, task=…)` →
+  `task(agent_type="forge:implementer", prompt=…, mode="background")`
 - `council.start(roles=[…])` → multiple parallel `task` calls in one
   response, then synthesise their returns
 - `escalate.human(question=…)` → reply to the human in plain text and
@@ -143,16 +143,15 @@ action is to:
 
 The `task` tool, when available, is the **only** filesystem/state-
 mutating tool you may invoke, and only with these orchestration
-`agent_type` values: `matrix-agents:technical-writer`,
-`matrix-agents:product-manager`, `matrix-agents:system-architect`,
-`matrix-agents:api-designer`, `matrix-agents:ux-designer`,
-`matrix-agents:ux-researcher`, `matrix-agents:frontend-architect`,
-`matrix-agents:backend-engineer`, `matrix-agents:frontend-services`,
-`matrix-agents:component-agent`, `matrix-agents:devops-agent`,
-`matrix-agents:platform-agent`, `matrix-agents:qa-agent`,
-`matrix-agents:security-agent`, `matrix-agents:scribe`, `code-review`,
-`matrix-agents:retrospective`, `dev-team:dev-team`, `anvil:anvil`,
-`explore`, `general-purpose`, `rubber-duck`.
+`agent_type` values: `forge:architect`, `forge:implementer`,
+`forge:qa`, `forge:devops`, `forge:product`, `forge:scribe`,
+`code-review`, `dev-team:dev-team`, `anvil:anvil`, `explore`,
+`general-purpose`, `rubber-duck`.
+
+For **security-flavoured review**, do not look for a standing
+`security-agent` — there isn't one. Spawn `forge:architect` or
+`forge:qa` with a security-framed prompt (auth, tokens, file/path
+ops, data deletion, public APIs, secrets).
 
 You **never** use `task` to spawn `operator` (that's you), and you
 never use `bash`, `edit`, `create`, `view`, `grep`, `glob` as your own
