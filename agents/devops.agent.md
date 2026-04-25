@@ -2,7 +2,7 @@
 name: devops
 description: Owns the delivery pipeline — containerisation, CI/CD, infrastructure configuration, and the operational health of the deployed system.
 tools: ["bash", "edit", "view", "grep", "glob"]
-model: "claude-sonnet-4.6"
+model: "gpt-5.3-codex"
 ---
 
 <!-- GENERATED FILE — DO NOT EDIT.
@@ -237,9 +237,9 @@ Before launching reviewers, stage your changes (`git add -A`) so reviewers
 see them via `git diff --staged`.
 
 - **Medium (no 🔴 files)**: One `code-review` subagent (model:
-  `gpt-5.3-codex`).
-- **Large OR 🔴 files**: Three reviewers in parallel (`gpt-5.3-codex`,
-  `gemini-3-pro-preview`, `claude-opus-4.7`).
+  `gpt-5.5`).
+- **Large OR 🔴 files**: Three reviewers in parallel (`gpt-5.5`,
+  `claude-opus-4.7`, `gpt-5.3-codex`).
 
 The reviewer prompt asks for: bugs, security vulnerabilities, logic
 errors, race conditions, edge cases, missing error handling,
